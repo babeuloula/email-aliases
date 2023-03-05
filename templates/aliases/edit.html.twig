@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add an alias - {{ parent('title') }}{% endblock %}
+
+{% block body %}
+<a href="{{ path('app_home') }}" class="btn btn-secondary mb-2">
+    Back to home
+</a>
+
+<form method="post">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="source" placeholder="alias" aria-label="source" value="{{ alias.source }}" required>
+        <span class="input-group-text">@</span>
+        <input type="text" class="form-control" name="domain" placeholder="domain.com" aria-label="domain" value="{{ alias.domain }}" required>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-text">
+            Destinations<br>
+            (one per line)
+        </span>
+        <textarea class="form-control" name="destinations" aria-label="Destinations" required>{{ alias.destinations|join("\r\n") }}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-2">Update</button>
+</form>
+{% endblock %}

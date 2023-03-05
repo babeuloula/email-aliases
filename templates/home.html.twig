@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a href="{{ path('app_add_alias') }}" class="btn btn-success mb-2">
+    Add an alias
+</a>
+
+<ul class="list-group">
+    {% for alias in aliases %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>
+                <strong>{{ alias.source }}</strong>
+                ({{ alias.destinations|join(', ') }})
+            </span>
+
+            <span>
+                <a href="{{ path('app_edit_alias', { 'domain': alias.domain, 'source': alias.source }) }}"
+                   class="btn btn-primary"
+                >
+                    <i class="bi bi-pencil"></i>
+                </a>
+
+                <a href="{{ path('app_remove_alias', { 'domain': alias.domain, 'source': alias.source }) }}"
+                   class="btn btn-danger"
+                   onclick="return confirm('Are you sure you want to delete this alias?')"
+                >
+                    <i class="bi bi-trash3"></i>
+                </a>
+            </span>
+        </li>
+    {% else %}
+        <li class="list-group-item list-group-item-light">
+            You don't have any aliases.
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,2 +1,9 @@
-# email-aliases
-Gestion des alias d'adresses email Gandi
+# Email aliases
+
+Gestion des alias d'adresses email Gandi.
+
+## Installation
+
+```bash
+make install
+```
